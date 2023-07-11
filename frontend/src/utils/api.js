@@ -15,20 +15,29 @@ class Api {
 
   getUserInfo() {
     return this._request("/users/me", {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
     });
   }
 
   getInitialCards() {
     return this._request("/cards", {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
     });
   }
 
   patchUserInfo(values) {
     return this._request("/users/me", {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(values),
     });
   }
@@ -36,7 +45,10 @@ class Api {
   addNewCard(card) {
     return this._request("/cards", {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(card),
     });
   }
@@ -44,21 +56,30 @@ class Api {
   deleteCard(cardId) {
     return this._request(`/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
     });
   }
 
   setLike(cardId, isLiked) {
     return this._request(`/cards/${cardId}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
     });
   }
 
   uploadAvatar(value) {
     return this._request("/users/me/avatar", {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(value),
     });
   }
@@ -66,10 +87,6 @@ class Api {
 
 const api = new Api({
   baseUrl: "https://api.mesto.rs.nomoredomains.work",
-  headers: {
-    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-    "Content-Type": "application/json",
-  },
 });
 
 export default api;
