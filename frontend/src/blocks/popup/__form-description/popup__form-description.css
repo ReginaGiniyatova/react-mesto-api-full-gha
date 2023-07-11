@@ -1,0 +1,11 @@
+.popup__form-description {
+  color: black;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  white-space: pre-wrap;
+  margin: 0 0 60px 0;
+  padding: 0;
+}

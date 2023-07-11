@@ -1,0 +1,7 @@
+.header__menu-link_inactive {
+  opacity: 0.6;
+}
+
+.header__menu-link_inactive:hover {
+  opacity: 1;
+}

@@ -1,0 +1,18 @@
+.register__has-account-text {
+  margin: 15px 0 0 0;
+  padding: 0;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.register__has-account-text:hover {
+  opacity: 0.6;
+}

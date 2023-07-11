@@ -1,0 +1,21 @@
+.form__error {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-top: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  height: 32px;
+  color: #ff0000;
+}
+
+@media screen and (max-width: 430px) {
+  .form__error {
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+}

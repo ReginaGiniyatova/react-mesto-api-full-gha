@@ -1,0 +1,20 @@
+.login-form__save-btn {
+  margin: 216px 0 0 0;
+  height: 50px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 1);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: black;
+  border: 0;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.login-form__save-btn:hover {
+  opacity: 0.85;
+}
