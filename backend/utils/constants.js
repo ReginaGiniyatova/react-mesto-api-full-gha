@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const URL_REGEX = /https?:\/\/(www\.)?[[a-zA-Z0-9-._~:/?#[]+\.[a-z]+[[a-zA-Z0-9-._~:/?#[]+/;
 
-const SECRET_KEY = 'marpha-the-cat';
+const SECRET_KEY = process.env.JWT_SECRET;
 
 const INVALID_ARGUMENTS_ERROR = 400;
 const AUTHORIZATION_ERROR = 401;
