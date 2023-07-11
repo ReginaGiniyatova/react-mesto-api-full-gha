@@ -28,7 +28,6 @@ app.use(bodyParser.json());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
-    console.log('crash');
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
