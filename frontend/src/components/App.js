@@ -48,7 +48,7 @@ function App() {
       authApi
         .getContent(jwt)
         .then((json) => {
-          setEmail(json.data.email);
+          setEmail(json.email);
           setLoggedIn(true);
           navigate("/", { replace: true });
         })
@@ -109,7 +109,7 @@ function App() {
     authApi
       .signUp(data)
       .then((json) => {
-        setEmail(json.data.email);
+        setEmail(json.email);
         navigate("/sign-in", { replace: true });
         setIsRegisterSuccess(true);
       })
