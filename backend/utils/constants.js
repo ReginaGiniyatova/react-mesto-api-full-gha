@@ -1,8 +1,8 @@
-require('dotenv').config();
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const URL_REGEX = /https?:\/\/(www\.)?[[a-zA-Z0-9-._~:/?#[]+\.[a-z]+[[a-zA-Z0-9-._~:/?#[]+/;
 
-const SECRET_KEY = process.env.JWT_SECRET;
+const SECRET_KEY = NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret';
 
 const INVALID_ARGUMENTS_ERROR = 400;
 const AUTHORIZATION_ERROR = 401;
