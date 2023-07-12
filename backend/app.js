@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 const usersRoutes = require('./routes/users');
@@ -24,7 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -41,9 +40,9 @@ app.use(auth);
 app.use('/users', usersRoutes);
 app.use('/cards', cardsRoutes);
 
-app.use(errorLogger);
-
 app.use((req, res, next) => next(new NotFoundError(PAGE_NOT_FOUND_MESSAGE)));
+
+app.use(errorLogger);
 
 app.use(errors());
 app.use(errorHandler);

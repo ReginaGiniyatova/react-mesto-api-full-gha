@@ -14,18 +14,18 @@ users.get('/', getUsers);
 users.get('/me', getUserInfo);
 users.get('/:userId', celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().hex().length(24),
+    userId: Joi.string().required().hex().length(24),
   }),
 }), getUserById);
 users.patch('/me', celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    name: Joi.string().required().min(2).max(30),
+    about: Joi.string().required().min(2).max(30),
   }),
 }), updateUserInfo);
 users.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().pattern(URL_REGEX),
+    avatar: Joi.string().required().pattern(URL_REGEX),
   }),
 }), updateUserAvatar);
 

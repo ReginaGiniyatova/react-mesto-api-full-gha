@@ -4,11 +4,9 @@ const {
 } = require('../utils/constants');
 
 module.exports = (err, req, res, next) => {
-  const {
-    statusCode = ERROR,
-    message: msg = SOMETHING_WENT_WRONG_MESSAGE,
-  } = err;
+  const statusCode = err.statusCode || ERROR;
+  const message = statusCode === ERROR ? SOMETHING_WENT_WRONG_MESSAGE : err.message;
 
-  res.status(statusCode).send({ message: msg });
+  res.status(statusCode).send({ message });
   next();
 };

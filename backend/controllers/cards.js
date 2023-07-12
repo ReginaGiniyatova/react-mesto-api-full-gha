@@ -2,9 +2,7 @@ const Card = require('../models/card');
 const InvalidArgumentError = require('../errors/InvalidArgumentError');
 const NotFoundError = require('../errors/NotFoundError');
 const PermissionError = require('../errors/PermissionError');
-const UnexpectedError = require('../errors/UnexpectedError');
 const {
-  SOMETHING_WENT_WRONG_MESSAGE,
   INVALID_ARGUMENTS_MESSAGE,
   CARD_NOT_FOUND_MESSAGE,
   PERMISSION_ERROR_MESSAGE,
@@ -13,7 +11,7 @@ const {
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .then((card) => res.send(card))
-    .catch(() => next(new UnexpectedError(SOMETHING_WENT_WRONG_MESSAGE)));
+    .catch(next);
 };
 
 module.exports.createCard = (req, res, next) => {
@@ -25,7 +23,7 @@ module.exports.createCard = (req, res, next) => {
     .catch((error) => (
       error.name === 'ValidationError'
         ? next(new InvalidArgumentError(INVALID_ARGUMENTS_MESSAGE))
-        : next(new UnexpectedError(SOMETHING_WENT_WRONG_MESSAGE))
+        : next
     ));
 };
 
@@ -47,7 +45,7 @@ module.exports.deleteCardById = (req, res, next) => {
 
       return card.deleteOne()
         .then(() => res.send(card))
-        .catch(() => next(new UnexpectedError(SOMETHING_WENT_WRONG_MESSAGE)));
+        .catch(next);
     })
     .catch(next);
 };
